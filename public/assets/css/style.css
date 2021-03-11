@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    background-color: #ea5455;
+    color: #fff;
+}
+
+nav ul li {
+    margin: 0 8px;
+}
+
+nav .navbar-brand:hover {
+    text-decoration: underline;
+}
+
+nav .nav-link:hover {
+    color: #f07b3f !important;
+}
+
+nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+nav .btn {
+    margin-left: 92px;
+}
+
+.navbar.scrolled {
+    background-color: #fff !important;
+    transition: background-color 200ms linear;
+}
+
+.navbar.scrolled .nav-link, .navbar.scrolled .brand {
+    color:#555;
+}
+
+.jumbotron {
+    background-color: #2d4059;
+    color: #ffd460;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+    min-height: 90vh;
+    margin-bottom: 0;
+}
+
+.jumbotron .container {
+    margin-top: 40vh;
+}
+
+.jumbotron h1, .jumbotron p {
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.menu {
+    min-height: 80vh;
+}
+
+.about {
+    background-color: #2d4059;
+    color: #ffd460;
+    min-height: 70vh;
+}
+
+.btn {
+    background-color: #ffd460;
+}
+
+.btn:hover {
+    background-color: #f07b3f;
+}
+
+.menu hr {
+    width: 300px;
+    border-top: 3px solid #fff;
+}
+
+.about hr {
+    width: 300px;
+    border-top: 3px solid #ffd460;
+}
