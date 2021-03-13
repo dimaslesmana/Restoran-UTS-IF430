@@ -3,8 +3,6 @@ $(document).ready(function() {
 		const $nav = $(".navbar");
 		$nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
 	});
-});
 
-$(document).ready(function() {
-    $('#menuTable').DataTable();
-} );
+	$('#listMenuTable').DataTable();
+});

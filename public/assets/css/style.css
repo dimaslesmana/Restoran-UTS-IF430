@@ -8,28 +8,25 @@ html {
 
 html, body {
     background-color: #ea5455;
-    color: #fff;
 }
 
+
+
+/*** HOME ***/
 nav ul li {
     margin: 0 8px;
+}
+
+nav .navbar-toggler {
+    background-color: #ea5455;
 }
 
 nav .navbar-brand:hover {
     text-decoration: underline;
 }
 
-nav .nav-link:hover {
+nav .nav-link:hover, nav .nav-link:focus {
     color: #f07b3f !important;
-}
-
-nav .dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
-}
-
-nav .btn {
-    margin-left: 92px;
 }
 
 .navbar.scrolled {
@@ -38,7 +35,7 @@ nav .btn {
 }
 
 .navbar.scrolled .nav-link, .navbar.scrolled .brand {
-    color:#555;
+    color:#2d4059;
 }
 
 .jumbotron {
@@ -47,12 +44,17 @@ nav .btn {
     background-attachment: fixed;
     background-size: cover;
     overflow: hidden;
-    min-height: 90vh;
+    min-height: 85vh;
     margin-bottom: 0;
 }
 
 .jumbotron .container {
-    margin-top: 40vh;
+    margin-top: 22vh;
+}
+
+.jumbotron img {
+    width: 20%;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .jumbotron h1, .jumbotron p {
@@ -61,20 +63,102 @@ nav .btn {
 
 .menu {
     min-height: 80vh;
+    padding-top: 25vh;
+}
+
+.menu .nav-link.active {
+    background-color: #f07b3f;
+}
+
+.menu .nav-link {
+    color: #ffd460;
+}
+
+.menu .category-list {
+    background-color: #2d4059;
+    padding: 24px;
+    border-radius: 18px;
+}
+
+.menu .menu-list {
+    background-color: #ffd460;
+    padding: 24px;
+    border-radius: 18px;
+}
+
+.menu .card {
+    background-color: #2d4059;
+    border-radius: 18px;
+    color: #fff;
+    width: 200px;
+    margin: 8px;
+}
+
+.menu .card:hover {
+    cursor: pointer;
+}
+
+.menu .card-overlay {
+    position: relative;
+    transition: transform .1s ease-in-out;
+    padding: 8px;
+}
+
+.menu .card-overlay img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden;
+    border-radius: 12px;
+}
+
+.menu .card-overlay .card-img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+}
+
+.menu .card:hover .card-img-overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.menu .card-overlay .card-img-overlay .card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.menu .tab-pane.active {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: scroll;
+}
+
+.menu .cardWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    transform: translateZ(0);
+    overflow: visible;
 }
 
 .about {
     background-color: #2d4059;
     color: #ffd460;
-    min-height: 70vh;
-}
-
-.btn {
-    background-color: #ffd460;
-}
-
-.btn:hover {
-    background-color: #f07b3f;
+    min-height: 90vh;
+    padding-top: 20vh;
 }
 
 .menu hr {
@@ -86,3 +170,106 @@ nav .btn {
     width: 300px;
     border-top: 3px solid #ffd460;
 }
+
+.jumbotron .btn, nav .btn {
+    background-color: #f07b3f;
+    color: #fff;
+}
+
+.jumbotron .btn:hover, nav .btn:hover {
+    background-color: #df713a;
+    color: #fff;
+}
+
+footer {
+    background-color: #ffd460;
+    color: #2d4059;
+}
+/*** END OF HOME ***/
+
+
+
+/*** LOGIN & REGISTER ***/
+.login {
+    height: 600px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.register {
+    height: 700px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.login .btn, .register .btn {
+    background-color: #f07b3f;
+    color: #fff;
+}
+
+.login .btn:hover, .register .btn:hover {
+    background-color: #df713a;
+    color: #fff;
+}
+
+.login a, .register a {
+    color: #fff;
+}
+
+.login .card a, .register .card a {
+    color: #f07b3f;
+}
+/*** END OF LOGIN & REGISTER ***/
+
+
+
+/*** DETAIL ***/
+.detail nav {
+    background-color: #fff;
+}
+
+.detail nav .nav-link, .detail nav .brand {
+    color: #2d4059 !important;
+}
+
+.detail nav .nav-link:hover {
+    color: #f07b3f !important;
+}
+
+.menu-detail .container {
+    margin-top: 15vh;
+}
+
+.menu-detail img {
+    border-radius: 12px;
+}
+/*** END OF DETAIL ***/
+
+
+
+/*** ADMIN ***/
+.admin nav {
+    background-color: #fff;
+}
+
+.admin nav .nav-link, .admin nav .brand {
+    color: #2d4059 !important;
+}
+
+.admin nav .nav-link:hover {
+    color: #f07b3f !important;
+}
+
+/*** END OF ADMIN ***/

@@ -1,5 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
-<h1>Signup/index</h1>
+
+<h1>Admin/delete</h1>
+
 <?= $this->endSection(); ?>

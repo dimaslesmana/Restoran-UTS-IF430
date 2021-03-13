@@ -45,7 +45,10 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
-		$this->menuModel = new \App\Models\MenuModel();
+		session();
+		helper('number');
+		$this->menusModel = new \App\Models\MenusModel();
+		$this->categoriesModel = new \App\Models\CategoriesModel();
 		$this->usersModel = new \App\Models\UsersModel();
 	}
 }

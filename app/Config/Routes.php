@@ -7,8 +7,7 @@ $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 	require SYSTEMPATH . 'Config/Routes.php';
 }
 
@@ -33,6 +32,31 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/menu/add-to-cart', 'RestaurantMenu::addToCart', ['filter' => 'user_auth']);
+$routes->get('/menu/(:num)', 'RestaurantMenu::detail/$1');
+$routes->group('auth', function ($routes) {
+	$routes->add('login', 'Auth::login');
+	$routes->add('register', 'Auth::register');
+});
+$routes->group('dashboard', function ($routes) {
+	$routes->get('/', 'Admin::index', ['filter' => 'admin_auth']);
+	$routes->add('menu/new', 'Admin::add');
+	$routes->add('menu/edit/(:any)', 'Admin::edit/$1');
+});
+// $routes->group('admin', function ($routes) {
+// 	$routes->add('menu/add', 'Admin::add');
+// 	$routes->add('menu/edit', 'Admin::edit');
+// });
+
+
+
+// $routes->group('admin', function ($routes) {
+// 	$routes->get('news', 'NewsAdmin::index');
+// 	$routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');
+// 	$routes->add('news/new', 'NewsAdmin::create');
+// 	$routes->add('news/(:segment)/edit', 'NewsAdmin::edit/$1');
+// 	$routes->get('news/(:segment)/delete', 'NewsAdmin::delete/$1');
+// });
 
 /*
  * --------------------------------------------------------------------
@@ -47,7 +71,6 @@ $routes->get('/', 'Home::index');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
