@@ -2,6 +2,10 @@
 
 <?= $this->section('content'); ?>
 
+<?php if (session()->getFlashdata('toastr')) : ?>
+    <?= session()->getFlashdata('toastr'); ?>
+<?php endif; ?>
+
 <header>
     <!-- Navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-transparent scrolled">
@@ -26,6 +30,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
+                    <?php if (session()->get('logged_in') && session()->get('role_id') !== 'R0001') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/orders">My Orders</a>
+                        </li>
+                    <?php endif; ?>
                     <?php if (session()->get('role_id') === 'R0001') : ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">Dashboard</a>

@@ -2,11 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<?php if (session()->getFlashdata('toastr')) : ?>
-    <?= session()->getFlashdata('toastr'); ?>
-<?php endif; ?>
-
-<div class="adminDashboard">
+<div class="ordersPage">
     <header>
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
@@ -25,9 +21,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
-                        </li>
+                        <?php if (session()->get('logged_in') && session()->get('role_id') !== 'R0001') : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">My Orders</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <?php if (session()->get('logged_in')) : ?>
                                 <a type="button" class="btn rounded-pill btn-block" href="/auth/logout">Logout</a>
@@ -48,57 +46,53 @@
             <div class="container text-white">
                 <div class="row mb-4 text-center">
                     <div class="col">
-                        <h3>List Menu</h3>
+                        <h3>My Orders</h3>
                         <hr>
                     </div>
                 </div>
-                <div class="row mb-3 text-right">
+                <div class="row mb-4">
                     <div class="col">
-                        <a href="/dashboard/menu/new" class="btn btn-primary"><i class="fa fa-plus"></i> Menu</a>
+                        <a class="text-white" href="/"><i class="fa fa-arrow-circle-left"></i> Back to Home</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <table id="admin-listMenuTable" class="table table-striped table-bordered table-dark" style="width: 100%;">
+                        <table id="myOrdersTable" class="table table-striped table-bordered table-dark" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama</th>
-                                    <th>Harga</th>
-                                    <th>Deskripsi</th>
                                     <th>Gambar</th>
-                                    <th>Action</th>
+                                    <th>Nama</th>
+                                    <th>Deskripsi</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah Pesanan</th>
+                                    <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($menus as $idx => $m) : ?>
+                                <?php foreach ($orders['menus'] as $idx => $m) : ?>
                                     <tr>
                                         <td><?= $idx + 1; ?></td>
-                                        <td><?= $m['nama']; ?></td>
-                                        <td><?= $m['harga']; ?></td>
-                                        <td><?= $m['deskripsi']; ?></td>
                                         <td>
                                             <img src="/assets/img/menu-restoran/<?= $m['gambar']; ?>" alt="<?= $m['nama']; ?>" width="150">
                                         </td>
-                                        <td>
-                                            <a type="button" class="btn btn-warning" href="/dashboard/menu/edit/<?= $m['id']; ?>"><i class="fa fa-edit"></i></a>
-                                            <form action="/dashboard/menu/delete/<?= $m['id']; ?>" method="post" class="d-inline">
-                                                <?= csrf_field(); ?>
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </td>
+                                        <td><?= $m['nama']; ?></td>
+                                        <td><?= $m['deskripsi']; ?></td>
+                                        <td><?= $m['harga']; ?></td>
+                                        <td><?= $orders['qty'][$m['nama']]; ?></td>
+                                        <td><?= $m['harga'] * $orders['qty'][$m['nama']]; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama</th>
-                                    <th>Harga</th>
-                                    <th>Deskripsi</th>
                                     <th>Gambar</th>
-                                    <th>Action</th>
+                                    <th>Nama</th>
+                                    <th>Deskripsi</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah Pesanan</th>
+                                    <th>Total</th>
                                 </tr>
                             </tfoot>
                         </table>

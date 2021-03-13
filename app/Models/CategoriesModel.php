@@ -17,6 +17,6 @@ class CategoriesModel extends Model
 
   public function getCategoryName($category_id)
   {
-    return $this->where(['category_id' => $category_id])->first();
+    return implode($this->select('category_name')->where(['category_id' => $category_id])->first());
   }
 }

@@ -11,28 +11,30 @@ class Auth extends BaseController
 
   public function login()
   {
+    if (session()->get('logged_in')) {
+      return redirect()->to('/');
+    }
+
     $data = [
       'title' => "K-Food 21 | Login",
       'validation' => \Config\Services::validation()
     ];
 
-    if (session()->get('logged_in')) {
-      return redirect()->to('/');
-    }
 
     return view('auth/login', $data);
   }
 
   public function register()
   {
+    if (session()->get('logged_in')) {
+      return redirect()->to('/');
+    }
+
     $data = [
       'title' => "K-Food 21 | Register",
       'validation' => \Config\Services::validation()
     ];
 
-    if (session()->get('logged_in')) {
-      return redirect()->to('/');
-    }
 
     return view('auth/register', $data);
   }
@@ -97,11 +99,21 @@ class Auth extends BaseController
           'required' => 'Gender is required',
           'in_list' => 'Choose Male/Female'
         ]
+      ],
+      'captcha' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Captcha is required'
+        ]
       ]
     ])) {
-      $validation = \Config\Services::validation();
 
-      return redirect()->to('/auth/register')->withInput()->with('validation', $validation);
+      return redirect()->to('/auth/register')->withInput();
+    }
+
+    if ($this->request->getVar('captcha') !== session()->get('captcha')) {
+      session()->setFlashdata('alert_error', 'Captcha Invalid!');
+      return redirect()->to('/auth/register')->withInput();
     }
 
     $data = [
@@ -139,11 +151,21 @@ class Auth extends BaseController
         'errors' => [
           'required' => 'Password is required'
         ]
+      ],
+      'captcha' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Captcha is required'
+        ]
       ]
     ])) {
-      $validation = \Config\Services::validation();
 
-      return redirect()->to('/auth/login')->withInput()->with('validation', $validation);
+      return redirect()->to('/auth/login')->withInput();
+    }
+
+    if ($this->request->getVar('captcha') !== session()->get('captcha')) {
+      session()->setFlashdata('alert_error', 'Captcha Invalid!');
+      return redirect()->to('/auth/login')->withInput();
     }
 
     $data = [
@@ -182,5 +204,44 @@ class Auth extends BaseController
       case 'R0002':
         return redirect()->to('/');
     }
+  }
+
+  public function captcha()
+  {
+    if (session()->get('logged_in')) {
+      return redirect()->to('/');
+    }
+
+    $md5_hash = md5(rand(0, 999));
+    $captcha = substr($md5_hash, 15, 5);
+
+    // Set captcha to session
+    session()->set('captcha', $captcha);
+
+    $width = 55;
+    $height = 24;
+    $image = imagecreatetruecolor($width, $height);
+
+    // Color
+    $white = imagecolorallocate($image, 255, 255, 255);
+    $theme = imagecolorallocate($image, 234, 84, 85);
+
+    // Background
+    imagefill($image, 0, 0, $theme);
+
+    // Print the captcha text in the image
+    // with random position & size 
+    imagestring($image, 5, rand(1, 7), rand(1, 7), $captcha, $white);
+
+    // Prevent any Browser Cache
+    header("Cache-Control: no-store, no-cache, must-revalidate");
+
+    // The PHP-file will be rendered as image 
+    header('Content-type: image/png');
+
+    // Convert image to png
+    imagepng($image);
+
+    imagedestroy($image);
   }
 }

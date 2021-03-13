@@ -8,10 +8,16 @@ class MenusModel extends Model
 {
   protected $table = 'menus';
   protected $useTimestamps = true;
+  protected $allowedFields = ['category_id', 'nama', 'harga', 'deskripsi', 'gambar'];
 
   public function getAllMenu()
   {
     return $this->findAll();
+  }
+
+  public function getMenusById($id_arr)
+  {
+    return $this->whereIn('id', $id_arr)->findAll();
   }
 
   public function getMenuById($id)
@@ -19,10 +25,26 @@ class MenusModel extends Model
     return $this->where(['id' => $id])->first();
   }
 
-  public function deleteMenu($id)
+  public function insertRecord($data)
   {
-    $this->delete($id);
+    $this->save([
+      'category_id' => $data['menu_category_id'],
+      'nama' => $data['menu_name'],
+      'harga' => $data['menu_price'],
+      'deskripsi' => $data['menu_desc'],
+      'gambar' => $data['menu_img']
+    ]);
+  }
 
-    return redirect()->to('/admin');
+  public function updateRecord($data)
+  {
+    $this->save([
+      'id' => $data['menu_id'],
+      'category_id' => $data['menu_category_id'],
+      'nama' => $data['menu_name'],
+      'harga' => $data['menu_price'],
+      'deskripsi' => $data['menu_desc'],
+      'gambar' => $data['menu_img']
+    ]);
   }
 }

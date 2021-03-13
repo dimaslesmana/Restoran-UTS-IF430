@@ -40,6 +40,13 @@
                                                 <?= $validation->getError('password'); ?>
                                             </div>
                                         </div>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-rounded form-control <?= ($validation->hasError('captcha')) ? 'is-invalid' : ''; ?>" id="captcha" name="captcha" placeholder="Captcha">
+                                            <img src="/auth/captcha" alt="captcha" class="img-thumbnail">
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('captcha'); ?>
+                                            </div>
+                                        </div>
                                         <button type="submit" class="btn btn-user btn-block">
                                             Login
                                         </button>

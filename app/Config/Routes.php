@@ -32,31 +32,24 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/menu/add-to-cart', 'RestaurantMenu::addToCart', ['filter' => 'user_auth']);
+$routes->get('/orders', 'Home::orders', ['filter' => 'user_auth']);
+$routes->delete('/menu/order/(:num)', 'RestaurantMenu::newOrder/$1', ['filter' => 'user_auth']);
 $routes->get('/menu/(:num)', 'RestaurantMenu::detail/$1');
+
 $routes->group('auth', function ($routes) {
 	$routes->add('login', 'Auth::login');
 	$routes->add('register', 'Auth::register');
+	$routes->get('captcha', 'Auth::captcha');
 });
+
 $routes->group('dashboard', function ($routes) {
 	$routes->get('/', 'Admin::index', ['filter' => 'admin_auth']);
-	$routes->add('menu/new', 'Admin::add');
-	$routes->add('menu/edit/(:any)', 'Admin::edit/$1');
+	$routes->add('menu/new', 'Admin::add', ['filter' => 'admin_auth']);
+	$routes->add('menu/save', 'Admin::save', ['filter' => 'admin_auth']);
+	$routes->add('menu/edit/(:num)', 'Admin::edit/$1', ['filter' => 'admin_auth']);
+	$routes->add('menu/update/(:num)', 'Admin::update/$1', ['filter' => 'admin_auth']);
+	$routes->delete('menu/delete/(:num)', 'Admin::delete/$1', ['filter' => 'admin_auth']);
 });
-// $routes->group('admin', function ($routes) {
-// 	$routes->add('menu/add', 'Admin::add');
-// 	$routes->add('menu/edit', 'Admin::edit');
-// });
-
-
-
-// $routes->group('admin', function ($routes) {
-// 	$routes->get('news', 'NewsAdmin::index');
-// 	$routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');
-// 	$routes->add('news/new', 'NewsAdmin::create');
-// 	$routes->add('news/(:segment)/edit', 'NewsAdmin::edit/$1');
-// 	$routes->get('news/(:segment)/delete', 'NewsAdmin::delete/$1');
-// });
 
 /*
  * --------------------------------------------------------------------

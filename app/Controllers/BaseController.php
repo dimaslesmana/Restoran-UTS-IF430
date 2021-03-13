@@ -27,7 +27,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = [];
+	protected $helpers = ['number'];
 
 	/**
 	 * Constructor.
@@ -46,8 +46,12 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
 		session();
-		helper('number');
+		$this->toastr	= '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+		<script type="text/javascript">toastr.options.closeButton = true;toastr.options.newestOnTop = true;toastr.options.progressBar = true;toastr.options.positionClass = "toast-top-center";</script>';
 		$this->menusModel = new \App\Models\MenusModel();
+		$this->ordersModel = new \App\Models\OrdersModel();
 		$this->categoriesModel = new \App\Models\CategoriesModel();
 		$this->usersModel = new \App\Models\UsersModel();
 	}

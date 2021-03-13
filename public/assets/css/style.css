@@ -259,17 +259,69 @@ footer {
 
 
 
-/*** ADMIN ***/
-.admin nav {
+/*** ADMIN DASHBOARD ***/
+.adminDashboard nav {
     background-color: #fff;
 }
 
-.admin nav .nav-link, .admin nav .brand {
+.adminDashboard nav .nav-link, .adminDashboard nav .brand {
     color: #2d4059 !important;
 }
 
-.admin nav .nav-link:hover {
+.adminDashboard nav .nav-link:hover {
+    color: #f07b3f !important;
+}
+/*** END OF ADMIN DASHBOARD ***/
+
+
+
+/*** ORDERS PAGE ***/
+.ordersPage nav {
+    background-color: #fff;
+}
+
+.ordersPage nav .nav-link, .ordersPage nav .brand {
+    color: #2d4059 !important;
+}
+
+.ordersPage nav .nav-link:hover {
+    color: #f07b3f !important;
+}
+/*** END OF ORDERS PAGE***/
+
+
+
+/*** ADD MENU ***/
+.addMenu nav {
+    background-color: #fff;
+}
+
+.addMenu nav .nav-link, .addMenu nav .brand {
+    color: #2d4059 !important;
+}
+
+.addMenu nav .nav-link:hover {
     color: #f07b3f !important;
 }
 
-/*** END OF ADMIN ***/
+.addMenuForm .container {
+    margin-top: 15vh;
+}
+
+.addMenuForm form {
+    background-color: #2d4059;
+    border-radius: 12px;
+    padding: 32px 62px 24px;
+}
+
+.addMenuForm form label.col-form-label {
+    color: #ffd460;
+    padding-left: 0;
+}
+/*** END OF DETAIL ***/
+
+
+
+.form-rounded {
+    border-radius: 1rem;
+}
