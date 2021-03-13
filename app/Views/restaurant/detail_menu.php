@@ -49,7 +49,7 @@
                         <h2><?= $nama_menu; ?> (<?= $kategori_menu; ?>)</h2>
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-5">
                     <div class="col-md-4">
                         <img src="/assets/img/menu-restoran/<?= $gambar_menu; ?>" alt="<?= $nama_menu; ?>" width="100%">
                     </div>
@@ -65,9 +65,9 @@
         </section>
     </main>
 
-    <footer class="fixed-bottom">
-        <div class="container">
-            <div class="row text-center pt-3">
+    <footer class="bg-transparent">
+        <div class="container text-white">
+            <div class="row pt-3 text-center">
                 <div class="col">
                     <p>&copy; 2021 &bull; K-Food 21</p>
                 </div>
