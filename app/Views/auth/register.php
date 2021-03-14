@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select class="form-rounded form-control <?= ($validation->hasError('jenisKelamin')) ? 'is-invalid' : ''; ?>" name="jenisKelamin">
+                                        <select class="form-control <?= ($validation->hasError('jenisKelamin')) ? 'is-invalid' : ''; ?>" name="jenisKelamin">
                                             <option selected disabled>Choose a gender</option>
                                             <option value="L">Male</option>
                                             <option value="P">Female</option>
@@ -66,15 +66,15 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-rounded form-control <?= ($validation->hasError('tanggalLahir')) ? 'is-invalid' : ''; ?>" id="tanggalLahir" name="tanggalLahir" placeholder="Birth Date" value="<?= old('tanggalLahir'); ?>" readonly>
+                                        <input type="text" class="form-control <?= ($validation->hasError('tanggalLahir')) ? 'is-invalid' : ''; ?>" id="tanggalLahir" name="tanggalLahir" placeholder="Birth Date" value="<?= old('tanggalLahir'); ?>" readonly>
                                         <div class="invalid-feedback">
                                             <?= $validation->getError('tanggalLahir'); ?>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-rounded form-control <?= ($validation->hasError('captcha')) ? 'is-invalid' : ''; ?>" id="captcha" name="captcha" placeholder="Captcha">
-                                    <img src="/auth/captcha" alt="captcha" class="img-thumbnail">
+                                <div class="form-group row mb-3 mx-auto">
+                                    <img src="/auth/captcha" alt="captcha" class="col-2">
+                                    <input type="text" class="form-control form-control-user col-10 <?= ($validation->hasError('captcha')) ? 'is-invalid' : ''; ?>" id="captcha" name="captcha" placeholder="Captcha">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('captcha'); ?>
                                     </div>

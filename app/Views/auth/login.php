@@ -40,9 +40,9 @@
                                                 <?= $validation->getError('password'); ?>
                                             </div>
                                         </div>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-rounded form-control <?= ($validation->hasError('captcha')) ? 'is-invalid' : ''; ?>" id="captcha" name="captcha" placeholder="Captcha">
-                                            <img src="/auth/captcha" alt="captcha" class="img-thumbnail">
+                                        <div class="form-group row mb-3 mx-auto">
+                                            <img src="/auth/captcha" alt="captcha" class="col-2">
+                                            <input type="text" class="form-control form-control-user col-10 <?= ($validation->hasError('captcha')) ? 'is-invalid' : ''; ?>" id="captcha" name="captcha" placeholder="Captcha">
                                             <div class="invalid-feedback">
                                                 <?= $validation->getError('captcha'); ?>
                                             </div>
