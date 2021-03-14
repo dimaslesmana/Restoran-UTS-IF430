@@ -81,8 +81,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-3 mx-2 my-2 category-list">
+                    <div class="row justify-content-center mx-1">
+                        <div class="col-lg-3 my-2 category-list">
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <?php foreach ($categories as $idx => $category) : ?>
                                     <a class="nav-link<?= ($idx === 0) ? ' active' : ''; ?>" id="v-pills-<?= str_replace(' ', '-', strtolower(trim($category['category_name']))); ?>-tab" data-toggle="pill" href="#v-pills-<?= str_replace(' ', '-', strtolower(trim($category['category_name']))); ?>" role="tab" aria-controls="v-pills-<?= str_replace(' ', '-', strtolower(trim($category['category_name']))); ?>" aria-selected="true"><?= $category['category_name']; ?></a>

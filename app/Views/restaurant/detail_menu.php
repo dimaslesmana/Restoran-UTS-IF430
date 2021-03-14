@@ -57,6 +57,7 @@
                 <div class="row mb-3">
                     <div class="col">
                         <h2><?= $menu_name; ?> (<?= $menu_category; ?>)</h2>
+                        <hr>
                     </div>
                 </div>
                 <div class="row mb-5">
@@ -70,7 +71,7 @@
                         <form action="/menu/order/<?= $menu_id; ?>" method="post" class="d-inline">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-success rounded-pill"><i class="fa fa-cart-arrow-down"></i> Order</button>
+                            <button type="submit" class="btn btn-success btn-block rounded-pill"><i class="fa fa-cart-arrow-down"></i> Order</button>
                         </form>
                     </div>
                 </div>

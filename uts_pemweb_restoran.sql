@@ -19,10 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dimasles_uts_pemweb`
+-- Database: `uts_pemweb`
 --
-CREATE DATABASE IF NOT EXISTS `dimasles_uts_pemweb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dimasles_uts_pemweb`;
+CREATE DATABASE IF NOT EXISTS `uts_pemweb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `uts_pemweb`;
 
 -- --------------------------------------------------------
 

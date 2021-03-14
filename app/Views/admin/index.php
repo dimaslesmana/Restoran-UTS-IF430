@@ -81,11 +81,11 @@
                                             <img src="/assets/img/menu-restoran/<?= $m['gambar']; ?>" alt="<?= $m['nama']; ?>" width="150">
                                         </td>
                                         <td>
-                                            <a type="button" class="btn btn-warning" href="/dashboard/menu/edit/<?= $m['id']; ?>"><i class="fa fa-edit"></i></a>
+                                            <a type="button" class="btn btn-warning mx-1 my-1" href="/dashboard/menu/edit/<?= $m['id']; ?>"><i class="fa fa-edit"></i></a>
                                             <form action="/dashboard/menu/delete/<?= $m['id']; ?>" method="post" class="d-inline">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-danger mx-1 my-1" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>

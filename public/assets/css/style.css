@@ -318,6 +318,10 @@ footer {
     color: #ffd460;
     padding-left: 0;
 }
+
+.addMenuForm form button {
+    margin: 0;
+}
 /*** END OF DETAIL ***/
 
 

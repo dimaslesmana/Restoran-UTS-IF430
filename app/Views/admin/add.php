@@ -103,7 +103,7 @@
                             </div>
                             <div class="form-group row py-1">
                                 <label for="menu_img" class="col-sm-2 col-form-label font-weight-bold">Image</label>
-                                <div class="col-sm-2">
+                                <div class="col-sm-2 pl-0">
                                     <img src="/assets/img/menu-restoran/placeholder.png" class="img-thumbnail img-preview">
                                 </div>
                                 <div class="col-sm-8 custom-file">
