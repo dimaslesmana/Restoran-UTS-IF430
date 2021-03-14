@@ -53,9 +53,6 @@
                                     </form>
                                     <hr>
                                     <div>
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div>
                                         <a class="small" href="/auth/register">Doesn't have an account? Create here!</a>
                                     </div>
                                 </div>
