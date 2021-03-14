@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 14, 2021 at 05:05 AM
+-- Generation Time: Mar 14, 2021 at 03:19 PM
 -- Server version: 10.3.27-MariaDB-log-cll-lve
 -- PHP Version: 7.3.6
 
@@ -96,6 +96,14 @@ CREATE TABLE `orders` (
   `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `email`, `nama`, `harga`, `deskripsi`, `gambar`, `created_at`, `updated_at`) VALUES
+(1, 'ade@gmail.com', 'Eomuk', 50000, 'Eomuk atau yang biasa disebut juga Odeng, merupakan daging ikan yang \r\ndihaluskan lalu dicampur tepung terigu dan beberapa bumbu. Kemudian ditusuk \r\ndengan tusuk sate dan direbus dengan kaldu.', 'Eomuk.png', '2021-03-14 00:12:00', '2021-03-14 00:12:00'),
+(2, 'ade@gmail.com', 'Tteokbokki', 40000, 'Tteokbokki terbuat dari garaetteok (kue beras berbentuk silinder bertekstur \r\nkenyal) yang direbus dengan saus gochujang (pasta cabai yang difermentasi).', 'Tteokbokki.png', '2021-03-14 00:12:10', '2021-03-14 00:12:10');
+
 -- --------------------------------------------------------
 
 --
@@ -133,6 +141,14 @@ CREATE TABLE `users` (
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `role_id`, `first_name`, `last_name`, `email`, `password`, `tanggal_lahir`, `jenis_kelamin`, `created_at`, `updated_at`) VALUES
+(1, 'R0001', 'Admin', '.', 'admin@umn.ac.id', '$2y$10$hOgGgv89YXY3PAwYCqxRgOxO6CXNg3gKFQCJtkc91B4raP/YynDo6', '2000-01-01', 'P', '2021-03-13 16:21:36', '2021-03-13 16:21:36'),
+(2, 'R0002', 'Ade', 'Kiswara', 'ade@gmail.com', '$2y$10$QGVkcTEN7.USmxFYKV/JruXhmFj89w9i5uAzRW/XsUBLX2e8kMH/y', '2001-03-23', 'L', '2021-03-14 00:10:15', '2021-03-14 00:10:15');
 
 --
 -- Indexes for dumped tables
@@ -186,13 +202,13 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
