@@ -12,6 +12,10 @@ class RestaurantMenu extends BaseController
   public function newOrder($id)
   {
     if (session()->get('role_id') === 'R0001') {
+      $toast_title = "Error";
+      $toast_msg = "Admin cannot place an order!";
+
+      session()->setFlashdata('toastr', $this->toastr . '<script type="text/javascript">toastr.error("' . $toast_msg . '", "' . $toast_title . '")</script>');
       return redirect()->to('/');
     }
 
